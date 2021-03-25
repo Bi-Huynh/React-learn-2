@@ -1,19 +1,73 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 
-const TodoContext = createContext(null);
+export const TodoContext = createContext(null);
 TodoContext.displayName = 'TodoContext';
 
-const ACTION_TODO = {};
+export const ACTION_TODO = {
+    RESET: 'resetTodos',
+    TODO_COMPLETED: 'todoCompleted',
+    TODO_LEVEL: 'todoLevel',
+    TODO_DELETED: 'todoDeleted',
+};
 
 const reducer = (todos, action) => {
     switch (action.type) {
+        case ACTION_TODO.RESET: {
+            return JSON.parse(JSON.stringify(action.list));
+        }
+        case ACTION_TODO.TODO_COMPLETED: {
+            let level = 4;
+            return todos.map((todo) => {
+                if (todo.id === action.id) {
+                    if (!todo.complete) level = 5;
+                    return { ...todo, complete: !todo.complete, level };
+                }
+                return todo;
+            });
+        }
+        case ACTION_TODO.TODO_LEVEL: {
+            return todos.map((todo) => {
+                if (todo.id === action.id) {
+                    return {
+                        ...todo,
+                        level: todo.level === 5 ? 1 : todo.level++,
+                    };
+                }
+                return todo;
+            });
+        }
         default:
             return todos;
     }
 };
 
+const init = [
+    {
+        id: 1,
+        content: 'Todo Content 1',
+        complete: true,
+        level: 5,
+    },
+    {
+        id: 2,
+        content: 'Todo Content 2',
+        complete: false,
+        level: 4,
+    },
+    {
+        id: 3,
+        content: 'Todo Content 3',
+        complete: false,
+        level: 1,
+    },
+];
+
 function TodoProvider({ children }) {
     const [todos, dispatch] = useReducer(reducer, []);
+
+    useEffect(() => {
+        dispatch({ type: ACTION_TODO.RESET, list: init });
+    }, []);
 
     const stores = {
         todos,

@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-
-import './Todo.css';
-import IconFilter from '../../image/icon/funnel.svg';
-import Button from '../UI/Button/Button.jsx';
 import { HomeContext } from '../../stores/Home';
 import TodoProvider from '../../stores/Todo';
+import Button from '../UI/Button/Button.jsx';
 import TodoList from './List/List';
+import './Todo.css';
+import IconFilter from '../../image/icon/funnel.svg';
 
 Todo.propTypes = {};
 
@@ -31,7 +29,7 @@ function Todo(props) {
                         alt="icon filter"
                     />
                 </div>
-
+                <TodoList></TodoList>
                 <div className="todo-list"></div>
                 <div className="todo-footer">
                     <Button>{'Clear All'}</Button>

@@ -6,7 +6,6 @@ import './Button.css';
 Button.propTypes = {};
 
 function Button({ children }) {
-    console.log(children);
     return <div className="button">{children}</div>;
 }
 
