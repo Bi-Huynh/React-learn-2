@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from 'react';
+import React, { createContext, useEffect, useReducer, useState } from 'react';
 
 export const TodoContext = createContext(null);
 TodoContext.displayName = 'TodoContext';
@@ -62,25 +62,38 @@ const init = [
     {
         id: 1,
         content: 'Todo Content 1',
-        complete: true,
-        level: 5,
+        complete: false,
+        level: 1,
     },
     {
         id: 2,
         content: 'Todo Content 2',
         complete: false,
-        level: 4,
+        level: 2,
     },
     {
         id: 3,
         content: 'Todo Content 3',
         complete: false,
-        level: 1,
+        level: 3,
+    },
+    {
+        id: 4,
+        content: 'Todo Content 2',
+        complete: false,
+        level: 4,
+    },
+    {
+        id: 5,
+        content: 'Todo Content 3',
+        complete: true,
+        level: 5,
     },
 ];
 
 function TodoProvider({ children }) {
     const [todos, dispatch] = useReducer(reducer, []);
+    const [filter, setFilter] = useState(0);
 
     useEffect(() => {
         dispatch({ type: ACTION_TODO.RESET, list: init });
@@ -89,6 +102,7 @@ function TodoProvider({ children }) {
     const stores = {
         todos,
         dispatch,
+        filter: { filter, setFilter },
     };
 
     return (
