@@ -6,7 +6,7 @@ import IconFilter from '../../image/icon/funnel.svg';
 import Button from '../UI/Button/Button.jsx';
 import { HomeContext } from '../../stores/Home';
 import TodoProvider from '../../stores/Todo';
-import Todo from './List';
+import TodoList from './List/List';
 
 Todo.propTypes = {};
 

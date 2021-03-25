@@ -1,0 +1,21 @@
+.button {
+    background: #FFFFFF;
+    border: 1px solid #c3c3c3;
+    box-sizing: border-box;
+    border-radius: 50px;
+    margin: 10px 5px 10px 20px;
+    padding: 10px 35px;
+    cursor: pointer;
+    transition: all ease .1s;
+}
+
+.button + .button {
+    border: 1px solid #E88585;
+    margin-left: 10px;
+}
+
+.button:hover {
+    opacity: .7;
+    background-color: #cecece;
+    transform: scale(.98);
+}
