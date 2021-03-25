@@ -41,7 +41,7 @@ const reducer = (todos, action) => {
         }
         case ACTION_TODO.TODO_DELETED: {
             return todos.filter((todo) => {
-                return todo.id != action.id;
+                return todo.id !== action.id;
             });
         }
         case ACTION_TODO.TODO_DELETED_COMPLETED: {
@@ -62,38 +62,38 @@ const reducer = (todos, action) => {
     }
 };
 
-const init = [
-    {
-        id: 1,
-        content: 'Todo Content 1',
-        complete: false,
-        level: 1,
-    },
-    {
-        id: 2,
-        content: 'Todo Content 2',
-        complete: false,
-        level: 2,
-    },
-    {
-        id: 3,
-        content: 'Todo Content 3',
-        complete: false,
-        level: 3,
-    },
-    {
-        id: 4,
-        content: 'Todo Content 2',
-        complete: false,
-        level: 4,
-    },
-    {
-        id: 5,
-        content: 'Todo Content 3',
-        complete: true,
-        level: 5,
-    },
-];
+// const init = [
+//     {
+//         id: 1,
+//         content: 'Todo Content 1',
+//         complete: false,
+//         level: 1,
+//     },
+//     {
+//         id: 2,
+//         content: 'Todo Content 2',
+//         complete: false,
+//         level: 2,
+//     },
+//     {
+//         id: 3,
+//         content: 'Todo Content 3',
+//         complete: false,
+//         level: 3,
+//     },
+//     {
+//         id: 4,
+//         content: 'Todo Content 2',
+//         complete: false,
+//         level: 4,
+//     },
+//     {
+//         id: 5,
+//         content: 'Todo Content 3',
+//         complete: true,
+//         level: 5,
+//     },
+// ];
 
 function TodoProvider({ children }) {
     const [todos, dispatch] = useReducer(reducer, []);
