@@ -32,8 +32,10 @@ function Todo(props) {
                 <TodoList></TodoList>
                 <div className="todo-list"></div>
                 <div className="todo-footer">
-                    <Button>{'Clear All'}</Button>
-                    <Button>{'Clearn Completed All'}</Button>
+                    <Button value={{ index: 1, content: 'Clear All' }}></Button>
+                    <Button
+                        value={{ index: 0, content: 'Clearn Completed All' }}
+                    ></Button>
                 </div>
             </div>
         </TodoProvider>

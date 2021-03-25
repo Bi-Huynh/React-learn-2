@@ -45,7 +45,7 @@ const reducer = (todos, action) => {
         }
         case ACTION_TODO.TODO_DELETED_COMPLETED: {
             return todos.filter((todo) => {
-                return !todo.complete || todo.level != 5;
+                return !todo.complete;
                 // lấy những thằng có complete = false là đủ r
                 // để cho chắc thì thêm luôn điều kiện là level khác 5 luôn
             });
