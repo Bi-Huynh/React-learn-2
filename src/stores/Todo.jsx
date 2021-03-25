@@ -8,6 +8,8 @@ export const ACTION_TODO = {
     TODO_COMPLETED: 'todoCompleted',
     TODO_LEVEL: 'todoLevel',
     TODO_DELETED: 'todoDeleted',
+    TODO_DELETED_COMPLETED: 'todoDeletedCompleted',
+    TODO_DELETED_ALL: 'todoDeletedAll',
 };
 
 const reducer = (todos, action) => {
@@ -35,6 +37,21 @@ const reducer = (todos, action) => {
                 }
                 return todo;
             });
+        }
+        case ACTION_TODO.TODO_DELETED: {
+            return todos.filter((todo) => {
+                return todo.id != action.id;
+            });
+        }
+        case ACTION_TODO.TODO_DELETED_COMPLETED: {
+            return todos.filter((todo) => {
+                return !todo.complete || todo.level != 5;
+                // lấy những thằng có complete = false là đủ r
+                // để cho chắc thì thêm luôn điều kiện là level khác 5 luôn
+            });
+        }
+        case ACTION_TODO.TODO_DELETED_ALL: {
+            return [];
         }
         default:
             return todos;

@@ -58,6 +58,10 @@ function TodoItem({ item }) {
         dispatch({ type: ACTION_TODO.TODO_LEVEL, id: item.id });
     };
 
+    const handleDeleteTodo = () => {
+        dispatch({ type: ACTION_TODO.TODO_DELETED, id: item.id });
+    };
+
     return (
         <div
             className={`item ${todoLevel} ${item.complete ? 'completed' : ''}`}
@@ -72,7 +76,12 @@ function TodoItem({ item }) {
             <div className={`icon ${todoLevel}`} onClick={handleCheckLevel}>
                 {item.level === 5 ? '' : item.level}
             </div>
-            <img className="icon delete" src={srcIconRemove} alt="deleted" />
+            <img
+                className="icon delete"
+                src={srcIconRemove}
+                alt="deleted"
+                onClick={handleDeleteTodo}
+            />
         </div>
     );
 }
