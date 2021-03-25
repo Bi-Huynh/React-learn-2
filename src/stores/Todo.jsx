@@ -10,6 +10,7 @@ export const ACTION_TODO = {
     TODO_DELETED: 'todoDeleted',
     TODO_DELETED_COMPLETED: 'todoDeletedCompleted',
     TODO_DELETED_ALL: 'todoDeletedAll',
+    ADD_TODO: 'addTodo',
 };
 
 const reducer = (todos, action) => {
@@ -53,6 +54,9 @@ const reducer = (todos, action) => {
         case ACTION_TODO.TODO_DELETED_ALL: {
             return [];
         }
+        case ACTION_TODO.ADD_TODO: {
+            return [action.newTodo, ...todos];
+        }
         default:
             return todos;
     }
@@ -95,9 +99,9 @@ function TodoProvider({ children }) {
     const [todos, dispatch] = useReducer(reducer, []);
     const [filter, setFilter] = useState(0);
 
-    useEffect(() => {
-        dispatch({ type: ACTION_TODO.RESET, list: init });
-    }, []);
+    // useEffect(() => {
+    //     dispatch({ type: ACTION_TODO.RESET, list: init });
+    // }, []);
 
     const stores = {
         todos,

@@ -7,6 +7,7 @@
     align-items: center;
     font-size: 14px;
     margin-bottom: 10px;
+    max-width: 380;
 }
 
 .todo-list .item:last-child {
@@ -14,7 +15,10 @@
 }
 
 .item .icon {
+    width: 20px;
+    height: 20px;
     max-width: 20px;
+    max-height: 20px;
     flex-grow: 1;
     margin: 0 5px;
     transition: all ease .5s;
@@ -26,6 +30,7 @@
     color: #353535;
 
     cursor: pointer;
+    border-radius: 50px;
 }
 
 .item .icon:hover {
@@ -80,4 +85,6 @@
 .item .todo-content {
     flex-grow: 2;
     padding-left: 5px;
+    word-wrap: break-word;
+    width: 270px;
 }

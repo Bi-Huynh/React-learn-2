@@ -3,7 +3,7 @@ import { HomeContext } from '../../stores/Home';
 import TodoProvider from '../../stores/Todo';
 import Button from '../UI/Button/Button.jsx';
 import TodoList from './List/List';
-import TodoHeader from './Header/Header.jsx';
+import TodoHeader from './Header.jsx';
 import './Todo.css';
 
 Todo.propTypes = {};
