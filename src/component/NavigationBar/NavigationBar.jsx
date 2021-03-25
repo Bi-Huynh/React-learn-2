@@ -1,11 +1,6 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-
 import { HomeContext } from '../../stores/Home';
-
 import './NavigationBar.css';
-import IconTodo from '../../image/icon/to-do.svg';
 
 NavigationBar.propTypes = {};
 

@@ -1,8 +1,6 @@
-import React, { useContext, useEffect } from 'react';
-
+import React, { useContext } from 'react';
 import { TodoContext } from '../../../stores/Todo.jsx';
 import TodoItem from '../Item/Item.jsx';
-
 import './List.css';
 
 TodoList.propTypes = {};

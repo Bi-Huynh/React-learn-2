@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { TodoContext, ACTION_TODO } from '../../../stores/Todo.jsx';
-
+import React, { useContext } from 'react';
 import IconComplete from '../../../image/icon/check-complete.svg';
 import IconUncomplete from '../../../image/icon/check.svg';
-import RemoveComplete from '../../../image/icon/remove.svg';
 import RemoveUncomplete from '../../../image/icon/remove-2.svg';
-
+import RemoveComplete from '../../../image/icon/remove.svg';
+import { ACTION_TODO, TodoContext } from '../../../stores/Todo.jsx';
 import './Item.css';
 
 TodoItem.propTypes = {
