@@ -7,14 +7,10 @@ function App() {
     return (
         <div className="container">
             <Router>
-                {/* <Navigate></Navigate> */}
                 <Switch>
                     <Route path="/">
                         <Home />
                     </Route>
-                    {/* <Route path="/todo">
-                        <Home />
-                    </Route> */}
                 </Switch>
             </Router>
         </div>
