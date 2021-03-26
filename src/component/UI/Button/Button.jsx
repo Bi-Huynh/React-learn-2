@@ -19,7 +19,7 @@ function Button({ value: { index, content } }) {
     const { dispatch } = useContext(TodoContext);
 
     const handleClick = (event) => {
-        event.target.dataset.index === 1
+        event.target.dataset.index === '1'
             ? dispatch({ type: ACTION_TODO.TODO_DELETED_ALL })
             : dispatch({ type: ACTION_TODO.TODO_DELETED_COMPLETED });
     };
