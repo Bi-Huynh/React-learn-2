@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { TodoContext } from '../../../stores/Todo.jsx';
 import TodoItem from '../Item/Item.jsx';
+
 import './List.css';
 
 TodoList.propTypes = {};
 
 function TodoList(props) {
     const {
-        todos,
         filter: { filter },
+        list: { todoList },
     } = useContext(TodoContext);
 
     // let todoItems = JSON.parse(JSON.stringify(todos));
@@ -19,15 +20,17 @@ function TodoList(props) {
     //     return a.level - b.level;
     // });
     if (filter === 0) {
-        todoItems = JSON.parse(JSON.stringify(todos));
+        // todoItems = JSON.parse(JSON.stringify(todos));
+        todoItems = JSON.parse(JSON.stringify(todoList));
     } else {
-        todoItems = todos.filter((todo) => todo.level === filter);
+        // todoItems = todos.filter((todo) => todo.level === filter);
+        todoItems = todoList.filter((todo) => todo.level === filter);
     }
 
     return (
         <div className="todo-list">
             {todoItems.map((todoItem) => {
-                return <TodoItem key={todoItem.id} item={todoItem}></TodoItem>;
+                return <TodoItem key={todoItem._id} item={todoItem}></TodoItem>;
             })}
         </div>
     );

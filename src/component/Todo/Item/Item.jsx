@@ -4,7 +4,11 @@ import IconComplete from '../../../image/icon/check-complete.svg';
 import IconUncomplete from '../../../image/icon/check.svg';
 import RemoveUncomplete from '../../../image/icon/remove-2.svg';
 import RemoveComplete from '../../../image/icon/remove.svg';
-import { ACTION_TODO, TodoContext } from '../../../stores/Todo.jsx';
+import { TodoContext } from '../../../stores/Todo.jsx';
+import {
+    deletedId as deleteIdTodo,
+    update as updateTodo,
+} from '../../../api/todoApi';
 import './Item.css';
 
 TodoItem.propTypes = {
@@ -21,7 +25,7 @@ TodoItem.defaultProps = {
 };
 
 function TodoItem({ item }) {
-    const { dispatch } = useContext(TodoContext);
+    const { getTodos } = useContext(TodoContext);
 
     let srcIconCheck = item.complete ? IconComplete : IconUncomplete;
     let srcIconRemove = item.complete ? RemoveComplete : RemoveUncomplete;
@@ -48,16 +52,44 @@ function TodoItem({ item }) {
             break;
     }
 
-    const handleCheckComplete = () => {
-        dispatch({ type: ACTION_TODO.TODO_COMPLETED, id: item.id });
+    const handleCheckComplete = async () => {
+        // dispatch({ type: ACTION_TODO.TODO_COMPLETED, id: item.id });
+        let level = 4;
+        if (!item.complete) {
+            level = 5;
+        }
+        const data = {
+            query: { _id: item._id },
+            data: { complete: !item.complete, level },
+        };
+        let response = await updateTodo(data);
+        if (response) {
+            getTodos();
+        }
     };
 
-    const handleCheckLevel = () => {
-        dispatch({ type: ACTION_TODO.TODO_LEVEL, id: item.id });
+    const handleCheckLevel = async () => {
+        // dispatch({ type: ACTION_TODO.TODO_LEVEL, id: item.id });
+        item.level = item.level === 4 ? 1 : ++item.level;
+        let level = item.level;
+        const data = {
+            query: { _id: item._id },
+            data: { level, complete: false },
+        };
+        let response = await updateTodo(data);
+        if (response) {
+            getTodos();
+        }
+
+        console.log(data);
     };
 
-    const handleDeleteTodo = () => {
-        dispatch({ type: ACTION_TODO.TODO_DELETED, id: item.id });
+    const handleDeleteTodo = async () => {
+        // dispatch({ type: ACTION_TODO.TODO_DELETED, id: item.id });
+        let response = await deleteIdTodo(item._id);
+        if (response) {
+            getTodos();
+        }
     };
 
     return (
