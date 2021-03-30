@@ -45,7 +45,7 @@ function NavigationBar() {
             <div className="nav-body" ref={navigation}>
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="">
                             <span className="icon">
                                 <i
                                     className="fa fa-home"

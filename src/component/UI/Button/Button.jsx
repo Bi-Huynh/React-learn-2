@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import './Button.css';
-import { ACTION_TODO, TodoContext } from '../../../stores/Todo';
+import { TodoContext } from '../../../stores/Todo';
+import { deleteData as deleteTodoData } from '../../../api/todoApi';
 
 Button.propTypes = {
     value: PropTypes.object,
@@ -16,12 +17,29 @@ Button.defaultProps = {
 };
 
 function Button({ value: { index, content } }) {
-    const { dispatch } = useContext(TodoContext);
+    const { getTodos } = useContext(TodoContext);
+
+    const handleDeletedCompleted = async () => {
+        let response = await deleteTodoData({ complete: true });
+        if (response) {
+            getTodos();
+        }
+    };
+
+    const handleDeletedAll = async () => {
+        let response = await deleteTodoData({});
+        if (response) {
+            getTodos();
+        }
+    };
 
     const handleClick = (event) => {
+        // event.target.dataset.index === '1'
+        //     ? dispatch({ type: ACTION_TODO.TODO_DELETED_ALL })
+        //     : dispatch({ type: ACTION_TODO.TODO_DELETED_COMPLETED });
         event.target.dataset.index === '1'
-            ? dispatch({ type: ACTION_TODO.TODO_DELETED_ALL })
-            : dispatch({ type: ACTION_TODO.TODO_DELETED_COMPLETED });
+            ? handleDeletedAll()
+            : handleDeletedCompleted();
     };
 
     return (
