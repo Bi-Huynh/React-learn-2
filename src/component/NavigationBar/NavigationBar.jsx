@@ -4,7 +4,7 @@ import './NavigationBar.css';
 
 NavigationBar.propTypes = {};
 
-function NavigationBar() {
+function NavigationBar(props) {
     const {
         ActiveTodo: { activeTodo, setActiveTodo },
     } = useContext(HomeContext);

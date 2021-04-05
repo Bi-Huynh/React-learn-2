@@ -1,0 +1,119 @@
+.music {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+
+    margin-left: 60px;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    z-index: 9;
+}
+
+.music .cd-song {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 20px;
+}
+
+.music .title-song {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    width: 250px;
+    height: 100%;
+    margin-right: 40px;
+}
+
+.music .title-song .name-song {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.music .title-song .name-singer {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.music .button-media {
+    position: relative;
+    width: 150px;
+    height: 100%;
+    
+    display: flex;
+}
+
+.music .button-media .fa {
+    position: relative;
+    flex-grow: 1;
+    height: 100%;
+    line-height: 100px;
+    text-align: center;
+
+    font-size: 25px;
+}
+
+.music .button-media .fa:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 0;
+    
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.music .button-media .fa:last-child {
+    text-align: right;
+}
+
+.music .button-media .fa:first-child {
+    text-align: left;
+}
+
+/* 
+.music .button-media .playing {
+    position: relative;
+    margin: 0 25px;
+    background-color: #f00;
+    text-align: center;
+    line-height: 
+} */
+
+.music .process-song {
+    position: relative;
+    width: 720px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    /* padding: 0 20px; */
+}
+
+.music .process-song .time {
+    position: relative;
+    margin: 0 20px;
+}
+
+.music .process-song .process {
+    position: relative;
+    width: 600px;
+    height: 5px;
+
+    background-color: #ccc;
+}
